@@ -6,22 +6,22 @@
 //
 
 import SwiftUI
- 
+
 struct ContentView: View {
-    @State private var message = ""
-    @State private var isShowing = false
-    
+    @EnvironmentObject var toast: Toast
+
     var body: some View {
         VStack {
             Button("Show Toast") {
-                message = "Hello, World!"
-                isShowing = true
+                self.toast.showToast(message: "Hello, World!")
             }
-            .padding()
-            .foregroundColor(Color.white)
-            .background(Color.blue)
-            .cornerRadius(10)
-            .toast(message: $message, isShowing: $isShowing)
         }
+        .toast(isShowing: $toast.isShowing, message: toast.message)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().environmentObject(Toast())
     }
 }

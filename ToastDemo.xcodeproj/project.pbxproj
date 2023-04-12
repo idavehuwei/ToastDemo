@@ -14,7 +14,6 @@
 		74058EDE29E66544003FAC0E /* ToastDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74058EDD29E66544003FAC0E /* ToastDemoTests.swift */; };
 		74058EE829E66544003FAC0E /* ToastDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74058EE729E66544003FAC0E /* ToastDemoUITests.swift */; };
 		74058EEA29E66544003FAC0E /* ToastDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74058EE929E66544003FAC0E /* ToastDemoUITestsLaunchTests.swift */; };
-		74058EF729E6655E003FAC0E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74058EF629E6655E003FAC0E /* ToastView.swift */; };
 		74058EF929E66583003FAC0E /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74058EF829E66583003FAC0E /* Toast.swift */; };
 		74058EFE29E665BE003FAC0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74058EFD29E665BE003FAC0E /* UIKit.framework */; platformFilter = ios; };
 /* End PBXBuildFile section */
@@ -48,7 +47,6 @@
 		74058EE329E66544003FAC0E /* ToastDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToastDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74058EE729E66544003FAC0E /* ToastDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDemoUITests.swift; sourceTree = "<group>"; };
 		74058EE929E66544003FAC0E /* ToastDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		74058EF629E6655E003FAC0E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		74058EF829E66583003FAC0E /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		74058EFD29E665BE003FAC0E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -108,7 +106,6 @@
 				74058ECF29E66544003FAC0E /* Assets.xcassets */,
 				74058ED129E66544003FAC0E /* ToastDemo.entitlements */,
 				74058ED229E66544003FAC0E /* Preview Content */,
-				74058EF629E6655E003FAC0E /* ToastView.swift */,
 				74058EF829E66583003FAC0E /* Toast.swift */,
 			);
 			path = ToastDemo;
@@ -278,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				74058ECE29E66543003FAC0E /* ContentView.swift in Sources */,
-				74058EF729E6655E003FAC0E /* ToastView.swift in Sources */,
 				74058EF929E66583003FAC0E /* Toast.swift in Sources */,
 				74058ECC29E66543003FAC0E /* AppDelegate.swift in Sources */,
 			);

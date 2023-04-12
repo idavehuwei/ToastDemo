@@ -10,17 +10,17 @@ import SwiftUI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var toast = Toast(message: "", isShowing: false)
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let rootView = ContentView()
-            .environmentObject(toast)
-        
-        window.rootViewController = UIHostingController(rootView: rootView)
-        window.makeKeyAndVisible()
-        
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let contentView = ContentView()
+            .environmentObject(Toast())
+
+        // Use a UIHostingController as window root view controller.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UIHostingController(rootView: contentView)
+        window?.makeKeyAndVisible()
+
         return true
     }
 }

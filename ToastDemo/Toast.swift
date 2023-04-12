@@ -1,43 +1,54 @@
-// Toast.swift
-
 import SwiftUI
-struct Toast: ViewModifier {
-    @Binding var message: String
+
+class Toast: ObservableObject {
+    @Published var isShowing: Bool = false
+    @Published var message: String = ""
+
+    init(message: String = "", isShowing: Bool = false) {
+        self.message = message
+        self.isShowing = isShowing
+    }
+
+    func showToast(message: String, duration: TimeInterval = 3.0) {
+        self.message = message
+        self.isShowing = true
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.isShowing = false
+        }
+    }
+}
+
+struct ToastView<Content>: View where Content: View {
     @Binding var isShowing: Bool
-    
-    func body(content: Content) -> some View {
-        ZStack {
-            content
-            if isShowing {
-                VStack {
-                    Text(message)
-                        .foregroundColor(Color.white)
-                        .padding()
-                        .background(Color.black)
-                        .cornerRadius(10)
-                        .padding(.horizontal, 50)
-                        .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
-                        .animation(.easeInOut(duration: 0.3))
-                        .onAppear(perform: {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                withAnimation {
-                                    isShowing = false
-                                }
-                            }
-                        })
-                        .zIndex(1)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.clear)
-                .transition(AnyTransition.opacity.combined(with: .scale))
-                .animation(.easeInOut(duration: 0.3))
+    let message: String
+    let content: () -> Content
+
+    var body: some View {
+        ZStack(alignment: .center) {
+            content()
+                .disabled(isShowing)
+                .blur(radius: isShowing ? 10 : 0)
+
+            VStack {
+                Text(message)
+                    .foregroundColor(Color.white)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .background(Color.black)
+                    .cornerRadius(50)
+                    .shadow(radius: 20)
+
             }
+            .opacity(isShowing ? 1 : 0)
+            .offset(x: 0, y: isShowing ? 0 : UIScreen.main.bounds.size.height)
+            .animation(.spring(response: 0.5, dampingFraction: 0.5))
         }
     }
 }
 
 extension View {
-    func toast(message: Binding<String>, isShowing: Binding<Bool>) -> some View {
-        self.modifier(Toast(message: message, isShowing: isShowing))
+    func toast(isShowing: Binding<Bool>, message: String) -> some View {
+        ToastView(isShowing: isShowing, message: message, content: { self })
     }
 }
